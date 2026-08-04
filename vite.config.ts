@@ -15,7 +15,8 @@ export default defineConfig({
         theme_color: '#009f9a',
         background_color: '#009f9a',
         display: 'standalone',
-        start_url: '/',
+        start_url: '/flip7-companion/',
+        scope: '/flip7-companion/',
         icons: [{ src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' }]
       }
     })
