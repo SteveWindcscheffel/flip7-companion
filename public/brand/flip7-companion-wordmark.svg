@@ -4,9 +4,13 @@
 
   <defs>
     <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
-      <feOffset dx="0" dy="5" result="off"/>
-      <feGaussianBlur in="off" stdDeviation="5" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.30 0 0 0 0 0.23 0 0 0 0 0.12 0 0 0 0.38 0"/>
+      <feOffset in="SourceAlpha" dx="0" dy="5" result="off"/>
+      <feGaussianBlur in="off" stdDeviation="4.5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.30 0 0 0 0 0.23 0 0 0 0 0.12 0 0 0 0.34 0" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
     <linearGradient id="creamSign" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#fff6e3"/>
