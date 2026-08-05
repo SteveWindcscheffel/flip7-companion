@@ -1010,7 +1010,8 @@ function App() {
                   {liveStandings.map((entry, index) => (
                     <div key={entry.player.id} className="leaderboard-row">
                       <div className="leaderboard-row__identity">
-                        <span>{index + 1}. {entry.player.name}</span>
+                        <span className="leaderboard-rank-badge" aria-hidden="true">{index + 1}</span>
+                        <span className="leaderboard-player-name">{entry.player.name}</span>
                         {activeGame.players[currentPlayerIndex]?.id === entry.player.id ? (
                           <span className="round-status-chip round-status-chip--playing">● Playing now</span>
                         ) : (draftScores[entry.player.id] ?? '').trim() !== '' ? (
@@ -1109,7 +1110,10 @@ function App() {
                 <div className="leaderboard-list">
                   {leaderboard.map((entry, index) => (
                     <div key={entry.player.id} className="leaderboard-row">
-                      <span>{index + 1}. {entry.player.name}</span>
+                      <div className="leaderboard-row__identity">
+                        <span className="leaderboard-rank-badge" aria-hidden="true">{index + 1}</span>
+                        <span className="leaderboard-player-name">{entry.player.name}</span>
+                      </div>
                       <strong>{entry.total}</strong>
                     </div>
                   ))}
