@@ -4,7 +4,17 @@ export interface Player {
   accent: PlayerAccent
 }
 
-export type PlayerAccent = 'coral' | 'violet' | 'blue' | 'green' | 'orange' | 'pink' | 'navy' | 'lime' | 'red' | 'purple'
+export type PlayerAccent =
+  | 'coral-red'
+  | 'royal-blue'
+  | 'emerald-green'
+  | 'amethyst-purple'
+  | 'warm-gold'
+  | 'magenta'
+  | 'sky-blue'
+  | 'orange'
+  | 'teal'
+  | 'raspberry'
 
 export interface Round {
   id: string

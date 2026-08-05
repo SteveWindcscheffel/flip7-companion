@@ -1,6 +1,5 @@
-import type { Game, Player, PlayerAccent } from '../types/game'
-
-const playerAccents: PlayerAccent[] = ['coral', 'violet', 'blue', 'green', 'orange', 'pink', 'navy', 'lime', 'red', 'purple']
+import type { Game, Player } from '../types/game'
+import { PLAYER_ACCENT_ORDER } from './playerAccents'
 
 export function validatePlayerNames(rawNames: string[]) {
   const trimmedValues = rawNames.map((name) => name.trim())
@@ -30,7 +29,7 @@ export function createActiveGame(names: string[]): Game {
   const players: Player[] = trimmed.map((name, index) => ({
     id: `player-${index + 1}`,
     name,
-    accent: playerAccents[index % playerAccents.length]
+    accent: PLAYER_ACCENT_ORDER[index % PLAYER_ACCENT_ORDER.length]
   }))
 
   return {

@@ -6,8 +6,8 @@ const game: Game = {
   id: 'game-1',
   createdAt: '2024-01-01T00:00:00.000Z',
   players: [
-    { id: 'p1', name: 'Ada', accent: 'coral' },
-    { id: 'p2', name: 'Grace', accent: 'violet' }
+    { id: 'p1', name: 'Ada', accent: 'coral-red' },
+    { id: 'p2', name: 'Grace', accent: 'amethyst-purple' }
   ],
   rounds: [
     { id: 'round-1', number: 1, scores: { p1: 30, p2: 20 }, createdAt: '2024-01-01T00:00:00.000Z' }
@@ -74,8 +74,8 @@ describe('player statistics', () => {
         id: 'game-1',
         createdAt: '2024-01-01T00:00:00.000Z',
         players: [
-          { id: 'player-1', name: 'Ada', accent: 'coral' },
-          { id: 'player-2', name: 'Grace', accent: 'violet' }
+          { id: 'player-1', name: 'Ada', accent: 'coral-red' },
+          { id: 'player-2', name: 'Grace', accent: 'amethyst-purple' }
         ],
         rounds: [
           { id: 'round-1', number: 1, scores: { 'player-1': 30, 'player-2': 20 }, createdAt: '2024-01-01T00:00:00.000Z' }
@@ -88,8 +88,8 @@ describe('player statistics', () => {
         id: 'game-2',
         createdAt: '2024-01-02T00:00:00.000Z',
         players: [
-          { id: 'ada-42', name: 'Ada', accent: 'coral' },
-          { id: 'grace-99', name: 'Grace', accent: 'violet' }
+          { id: 'ada-42', name: 'Ada', accent: 'coral-red' },
+          { id: 'grace-99', name: 'Grace', accent: 'amethyst-purple' }
         ],
         rounds: [
           { id: 'round-1', number: 1, scores: { 'ada-42': 18, 'grace-99': 22 }, createdAt: '2024-01-02T00:00:00.000Z' },

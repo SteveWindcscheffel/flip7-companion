@@ -1,7 +1,8 @@
-import { type FormEvent, type TouchEvent, useEffect, useRef, useState } from 'react'
+import { type CSSProperties, type FormEvent, type TouchEvent, useEffect, useRef, useState } from 'react'
 import homeWordmarkUrl from './assets/flip7-companion-wordmark.svg'
 import { storage } from './services/storage'
-import type { Game, Player } from './types/game'
+import type { Game, Player, PlayerAccent } from './types/game'
+import { PLAYER_ACCENT_ORDER, getAccentColor } from './utils/playerAccents'
 import { createActiveGame, validatePlayerNames } from './utils/gameSetup'
 import { buildRound, getHallOfFameEntries, getLeaderboard, getLiveStandings, getPlayerStatistics, getPlayerTotal, getRecentRoundSummaries, getWinnerIds } from './utils/scoring'
 
@@ -9,17 +10,10 @@ const MIN_PLAYERS = 2
 const MAX_PLAYERS = 10
 const WINNING_TARGET = 200
 const SWIPE_THRESHOLD = 60
-const accentColors: Record<string, string> = {
-  coral: '#d76348',
-  violet: '#6a5aa6',
-  blue: '#3f6f93',
-  green: '#4f7a58',
-  orange: '#c78632',
-  pink: '#a4597a',
-  navy: '#35536f',
-  lime: '#6a8f3b',
-  red: '#b33d45',
-  purple: '#6d4c7a'
+const DEFAULT_RECENT_SWATCH = '#b9ad92'
+
+function getUpcomingAccent(index: number): PlayerAccent {
+  return PLAYER_ACCENT_ORDER[index % PLAYER_ACCENT_ORDER.length]
 }
 
 function createStarterPlayers(count: number) {
@@ -887,6 +881,11 @@ function App() {
                   {recentPlayers.map((player) => (
                     <div key={player.id} className="recent-player-item">
                       <button type="button" className="recent-player-button" onClick={() => fillRecentPlayer(player.name)}>
+                        <span
+                          className="player-accent-swatch"
+                          style={{ backgroundColor: getAccentColor(player.accent, DEFAULT_RECENT_SWATCH) }}
+                          aria-hidden="true"
+                        />
                         <span className="recent-player-button__name">{player.name}</span>
                         <span className="recent-player-button__hint">Use</span>
                       </button>
@@ -911,7 +910,7 @@ function App() {
                     <label className="player-label" htmlFor={`player-${index + 1}`}>
                       Player {index + 1}
                     </label>
-                    <span className="accent-dot" aria-hidden="true" />
+                    <span className="accent-dot" style={{ backgroundColor: getAccentColor(getUpcomingAccent(index)) }} aria-hidden="true" />
                   </div>
                   <div className="player-input-row">
                     <input
@@ -981,11 +980,12 @@ function App() {
               </div>
               <div
                 className="score-card score-card--hero active-hero-card"
+                style={{ '--player-accent': getAccentColor(activeGame.players[currentPlayerIndex].accent) } as CSSProperties}
                 onTouchStart={handleSwipeStart}
                 onTouchEnd={(event) => handleSwipeEnd(event, 'round-entry')}
               >
-                <div className="score-card__nameplate" style={{ borderColor: accentColors[activeGame.players[currentPlayerIndex].accent] }}>
-                  <span className="accent-dot" style={{ backgroundColor: accentColors[activeGame.players[currentPlayerIndex].accent] }} aria-hidden="true" />
+                <div className="score-card__nameplate" style={{ borderColor: getAccentColor(activeGame.players[currentPlayerIndex].accent) }}>
+                  <span className="accent-dot" style={{ backgroundColor: getAccentColor(activeGame.players[currentPlayerIndex].accent) }} aria-hidden="true" />
                   <h3>{activeGame.players[currentPlayerIndex].name}</h3>
                 </div>
                 <div className="score-card__meta">
@@ -1014,6 +1014,7 @@ function App() {
                   {liveStandings.map((entry, index) => (
                     <div key={entry.player.id} className="leaderboard-row">
                       <div className="leaderboard-row__identity">
+                        <span className="player-color-marker" style={{ backgroundColor: getAccentColor(entry.player.accent) }} aria-hidden="true" />
                         <span className="leaderboard-rank-badge" aria-hidden="true">{index + 1}</span>
                         <span className="leaderboard-player-name">{entry.player.name}</span>
                         {activeGame.players[currentPlayerIndex]?.id === entry.player.id ? (
@@ -1051,6 +1052,7 @@ function App() {
             <>
               <div
                 className={`score-card score-card--hero active-hero-card${leaderboard[0]?.player.id === currentPlayer.id ? ' score-card--leader' : ''}`}
+                style={{ '--player-accent': getAccentColor(currentPlayer.accent) } as CSSProperties}
                 onTouchStart={handleSwipeStart}
                 onTouchEnd={(event) => handleSwipeEnd(event, 'active-card')}
               >
@@ -1066,8 +1068,8 @@ function App() {
                     →
                   </button>
                 </div>
-                <div className="score-card__nameplate" style={{ borderColor: accentColors[currentPlayer.accent] }}>
-                  <span className="accent-dot" style={{ backgroundColor: accentColors[currentPlayer.accent] }} aria-hidden="true" />
+                <div className="score-card__nameplate" style={{ borderColor: getAccentColor(currentPlayer.accent) }}>
+                  <span className="accent-dot" style={{ backgroundColor: getAccentColor(currentPlayer.accent) }} aria-hidden="true" />
                   <div>
                     <p className="section-label">Player {activePlayerIndex + 1} of {activeGame.players.length}</p>
                     <h3>{currentPlayer.name}</h3>
@@ -1079,7 +1081,7 @@ function App() {
                   <span>{Math.round(progress)}%</span>
                 </div>
                 <div className="progress-bar" aria-hidden="true">
-                  <div className="progress-bar__fill" style={{ width: `${progress}%`, background: `linear-gradient(90deg, ${accentColors[currentPlayer.accent]} 0%, #c94b32 100%)` }} />
+                  <div className="progress-bar__fill" style={{ width: `${progress}%`, background: `linear-gradient(90deg, ${getAccentColor(currentPlayer.accent)} 0%, #c94b32 100%)` }} />
                 </div>
                 <div className="score-card__meta">
                   <p className="section-label">Last five rounds</p>
@@ -1115,6 +1117,7 @@ function App() {
                   {leaderboard.map((entry, index) => (
                     <div key={entry.player.id} className="leaderboard-row">
                       <div className="leaderboard-row__identity">
+                        <span className="player-color-marker" style={{ backgroundColor: getAccentColor(entry.player.accent) }} aria-hidden="true" />
                         <span className="leaderboard-rank-badge" aria-hidden="true">{index + 1}</span>
                         <span className="leaderboard-player-name">{entry.player.name}</span>
                       </div>
