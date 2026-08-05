@@ -962,21 +962,21 @@ function App() {
 
   return (
     <main className="app-shell">
-      <section className="hero-card" aria-labelledby="active-title">
-        <div className="title-plaque">
-          <p className="eyebrow">Round {nextRoundNumber}</p>
-          <h1 id="active-title">Active Game</h1>
+      <section className="hero-card active-game-screen" aria-labelledby="active-title">
+        <div className="title-plaque title-plaque--active">
+          <span className="round-badge">Round {nextRoundNumber}</span>
+          <h1 id="active-title">ACTIVE GAME</h1>
         </div>
 
         <div className="setup-panel">
           {isEnteringRound ? (
-            <div className="round-entry-card">
+            <div className="round-entry-card active-round-entry-card">
               <div className="round-entry-head">
                 <p className="section-label">Round {activeGame.rounds.length + 1}</p>
                 <p className="section-label">Player {currentPlayerIndex + 1} of {activeGame.players.length}</p>
               </div>
               <div
-                className="score-card score-card--hero"
+                className="score-card score-card--hero active-hero-card"
                 onTouchStart={handleSwipeStart}
                 onTouchEnd={(event) => handleSwipeEnd(event, 'round-entry')}
               >
@@ -1003,7 +1003,7 @@ function App() {
                   placeholder="0"
                 />
               </div>
-              <div className="leaderboard-card leaderboard-card--compact">
+              <div className="leaderboard-card leaderboard-card--compact active-leaderboard-card">
                 <p className="section-label">Live standings</p>
                 <p className="live-standings-summary">{enteredScoresCount} of {activeGame.players.length} scores entered</p>
                 <div className="leaderboard-list">
@@ -1045,7 +1045,7 @@ function App() {
           ) : (
             <>
               <div
-                className={`score-card score-card--hero${leaderboard[0]?.player.id === currentPlayer.id ? ' score-card--leader' : ''}`}
+                className={`score-card score-card--hero active-hero-card${leaderboard[0]?.player.id === currentPlayer.id ? ' score-card--leader' : ''}`}
                 onTouchStart={handleSwipeStart}
                 onTouchEnd={(event) => handleSwipeEnd(event, 'active-card')}
               >
@@ -1104,7 +1104,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="leaderboard-card">
+              <div className="leaderboard-card active-leaderboard-card">
                 <p className="section-label">Live leaderboard</p>
                 <div className="leaderboard-list">
                   {leaderboard.map((entry, index) => (
