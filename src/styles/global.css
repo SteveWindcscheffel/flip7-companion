@@ -983,6 +983,7 @@ input:focus-visible {
     inset 0 0 0 2px rgba(217, 189, 131, 0.86),
     inset 0 0 0 7px rgba(180, 135, 53, 0.2);
   overflow: hidden;
+  isolation: isolate;
 }
 
 .home-card::before,
@@ -1012,7 +1013,27 @@ input:focus-visible {
   background-repeat: no-repeat;
   background-size: 22px 22px, 22px 22px, 22px 22px, 22px 22px, 180px 12px, 180px 12px;
   opacity: 0.62;
+  z-index: 0;
   pointer-events: none;
+}
+
+.home-card > *,
+.new-game-screen > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-card .home-actions,
+.home-card .home-panel,
+.home-card .home-reset-row {
+  z-index: 2;
+}
+
+.home-card .delete-saved-game-button,
+.home-card .reset-data-button {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
 }
 
 .home-card .title-plaque,
