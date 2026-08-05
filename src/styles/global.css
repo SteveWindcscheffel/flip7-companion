@@ -160,7 +160,7 @@ input:focus-visible {
 }
 
 .home-brand-image {
-  width: min(100%, 332px);
+  width: min(78%, 332px);
   height: auto;
   display: block;
   margin: 0 auto;

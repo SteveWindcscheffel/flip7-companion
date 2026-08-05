@@ -1,37 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" role="img" aria-labelledby="title desc">
-  <title id="title">Flip7 Companion wordmark</title>
-  <desc id="desc">Art deco tabletop-style plaque with Flip7 and Companion lettering.</desc>
+  <title id="title">Flip7 Companion</title>
+  <desc id="desc">Freestanding art deco sign with Flip7 plaque, coral seven medallion, and companion ribbon.</desc>
 
-  <g transform="translate(320 126) rotate(-4) translate(-320 -126)">
-    <rect x="86" y="44" width="468" height="168" rx="24" fill="#f8eed8"/>
-    <rect x="86" y="44" width="468" height="168" rx="24" fill="none" stroke="#b78a43" stroke-width="6"/>
-    <rect x="97" y="55" width="446" height="146" rx="18" fill="none" stroke="#d9b774" stroke-width="2.8"/>
+  <defs>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feOffset dx="0" dy="5" result="off"/>
+      <feGaussianBlur in="off" stdDeviation="5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.30 0 0 0 0 0.23 0 0 0 0 0.12 0 0 0 0.38 0"/>
+    </filter>
+    <linearGradient id="creamSign" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff6e3"/>
+      <stop offset="100%" stop-color="#f1dfbc"/>
+    </linearGradient>
+    <linearGradient id="coralPlaque" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d85a49"/>
+      <stop offset="100%" stop-color="#b63c30"/>
+    </linearGradient>
+  </defs>
 
-    <g fill="none" stroke="#b78a43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.82">
-      <path d="M108 86V66h20"/>
-      <path d="M513 66h20v20"/>
-      <path d="M108 170v20h20"/>
-      <path d="M513 190h20v-20"/>
-      <path d="M287 65h66"/>
-      <path d="M287 191h66"/>
+  <g transform="translate(320 138) rotate(-5) translate(-320 -138)" filter="url(#softShadow)">
+    <rect x="140" y="66" width="360" height="160" rx="28" fill="url(#creamSign)"/>
+    <rect x="140" y="66" width="360" height="160" rx="28" fill="none" stroke="#b88a3e" stroke-width="6"/>
+    <rect x="152" y="78" width="336" height="136" rx="20" fill="none" stroke="#d9b775" stroke-width="2.5"/>
+
+    <g fill="none" stroke="#b78a43" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" opacity="0.86">
+      <path d="M162 103V84h19"/>
+      <path d="M459 84h19v19"/>
+      <path d="M162 190v19h19"/>
+      <path d="M459 209h19v-19"/>
+      <path d="M284 86h72"/>
+      <path d="M284 206h72"/>
     </g>
 
-    <g transform="translate(510 78)">
-      <circle cx="0" cy="0" r="13" fill="#c24f42"/>
-      <path d="M0 -18V18M-18 0H18M-12 -12L12 12M12 -12L-12 12" stroke="#f1dfbc" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
-      <circle cx="0" cy="0" r="5" fill="#f3e2c0"/>
+    <rect x="202" y="108" width="236" height="86" rx="20" fill="url(#coralPlaque)"/>
+    <rect x="202" y="108" width="236" height="86" rx="20" fill="none" stroke="#f0d59e" stroke-width="3"/>
+    <text x="320" y="169" text-anchor="middle" font-family="'Limelight', Georgia, 'Times New Roman', serif" font-size="68" letter-spacing="3" fill="#bf4b3c" stroke="#f8e9c8" stroke-width="5.8" paint-order="stroke fill">FLIP7</text>
+    <text x="320" y="169" text-anchor="middle" font-family="'Limelight', Georgia, 'Times New Roman', serif" font-size="68" letter-spacing="3" fill="none" stroke="#8f5f2e" stroke-width="1.4" opacity="0.64">FLIP7</text>
+
+    <g transform="translate(455 113)">
+      <polygon points="0,-20 6,-8 18,-12 12,0 24,6 12,12 18,24 6,18 0,30 -6,18 -18,24 -12,12 -24,6 -12,0 -18,-12 -6,-8" fill="#c3483b" stroke="#f1d8a5" stroke-width="2"/>
+      <circle cx="0" cy="6" r="12" fill="#d65a49" stroke="#f1d8a5" stroke-width="2"/>
+      <text x="0" y="11" text-anchor="middle" font-family="'DM Sans', 'Segoe UI', Arial, sans-serif" font-size="14" font-weight="800" fill="#fff3da">7</text>
     </g>
-
-    <rect x="128" y="94" width="112" height="24" rx="12" fill="#c14f42"/>
-    <text x="184" y="111" text-anchor="middle" font-family="'DM Sans','Segoe UI',Arial,sans-serif" font-size="12" letter-spacing="2.2" font-weight="700" fill="#f8eed8">TABLETOP</text>
-
-    <text x="320" y="152" text-anchor="middle" font-family="'Limelight',Georgia,'Times New Roman',serif" font-size="88" letter-spacing="4" fill="#c2483b" stroke="#f6e5c4" stroke-width="6.2" paint-order="stroke fill" >FLIP7</text>
-    <text x="320" y="152" text-anchor="middle" font-family="'Limelight',Georgia,'Times New Roman',serif" font-size="88" letter-spacing="4" fill="none" stroke="#9a6831" stroke-width="1.6" opacity="0.65">FLIP7</text>
   </g>
 
-  <g transform="translate(320 210)">
-    <path d="M-155 -12h310l18 12-18 12h-310l-18-12z" fill="#f7e8c8" stroke="#b78a43" stroke-width="3"/>
-    <path d="M-124 -22l-10 10M124 -22l10 10" stroke="#b78a43" stroke-width="2" stroke-linecap="round" opacity="0.78"/>
-    <text x="0" y="7" text-anchor="middle" font-family="'DM Sans','Segoe UI',Arial,sans-serif" font-size="34" letter-spacing="7" font-weight="800" fill="#16283d">COMPANION</text>
+  <g transform="translate(320 242)" filter="url(#softShadow)">
+    <path d="M-142 -17h284l15 17-15 17h-284l-15-17z" fill="#f7e8c8" stroke="#b78a43" stroke-width="3"/>
+    <path d="M-116 -26l-8 9M116 -26l8 9" stroke="#b78a43" stroke-width="2" stroke-linecap="round" opacity="0.78"/>
+    <text x="0" y="8" text-anchor="middle" font-family="'DM Sans', 'Segoe UI', Arial, sans-serif" font-size="34" letter-spacing="6" font-weight="800" fill="#16283d">COMPANION</text>
   </g>
 </svg>
