@@ -776,7 +776,7 @@ function App() {
           <div className="title-plaque title-plaque--home">
             <img
               className="home-brand-image"
-              src={`${import.meta.env.BASE_URL}brand/flip7-companion-wordmark.svg`}
+              src="/flip7-companion/brand/flip7-companion-wordmark.svg"
               alt="Flip7 Companion"
             />
             <p className="tagline">A premium table-side scorekeeper for fast rounds and sharp finishes.</p>
