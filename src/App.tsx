@@ -800,7 +800,7 @@ function App() {
           </div>
 
           {activeGame ? (
-            <div className="home-panel saved-game-card">
+            <div className="home-panel saved-game-card home-panel--row-group">
               <p className="section-label">Saved unfinished game</p>
               <p className="helper-text saved-game-summary">Players: {activeGame.players.map((player) => player.name).join(', ')}</p>
               <p className="helper-text saved-game-summary">Current round: {currentRoundNumber}</p>
@@ -812,7 +812,7 @@ function App() {
               </button>
             </div>
           ) : history.length > 0 ? (
-            <div className="home-panel">
+            <div className="home-panel home-panel--row-group">
               <div className="panel-head">
                 <p className="section-label">Recent completed games</p>
               </div>
@@ -830,7 +830,7 @@ function App() {
                       year: 'numeric'
                     })
                     return (
-                      <button key={game.id} type="button" className="history-card history-card--compact" onClick={() => openGameDetail(game)}>
+                      <button key={game.id} type="button" className="history-card history-card--compact home-history-row" onClick={() => openGameDetail(game)}>
                         <div className="history-card__top">
                           <strong>{winnerNames.join(', ') || 'Winners pending'}</strong>
                           <span>{dateLabel}</span>
@@ -862,8 +862,8 @@ function App() {
 
     return (
       <main className="app-shell">
-        <section className="hero-card" aria-labelledby="new-game-title">
-          <div className="title-plaque">
+        <section className="hero-card new-game-screen" aria-labelledby="new-game-title">
+          <div className="title-plaque title-plaque--new-game">
             <button type="button" className="back-button" onClick={goHome}>
               ← Back
             </button>
@@ -871,7 +871,7 @@ function App() {
             <h1 id="new-game-title">New Game</h1>
           </div>
 
-          <form className="setup-panel" onSubmit={handleStartGame}>
+          <form className="setup-panel setup-panel--new-game" onSubmit={handleStartGame}>
             <div className="panel-header">
               <p>Build your table, save names, and begin the round.</p>
             </div>
@@ -900,7 +900,7 @@ function App() {
               </div>
             ) : null}
 
-            <div className="player-list">
+            <div className="player-list player-list--deck">
               {players.map((name, index) => (
                 <div key={`player-row-${index}`} className={`player-row${errors[index] ? ' player-row--invalid' : ''}`}>
                   <div className="player-row__head">
