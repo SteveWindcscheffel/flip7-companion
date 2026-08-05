@@ -1,6 +1,5 @@
 import { type FormEvent, type TouchEvent, useEffect, useRef, useState } from 'react'
 import { storage } from './services/storage'
-import { BrandMark } from './components/BrandMark'
 import type { Game, Player } from './types/game'
 import { createActiveGame, validatePlayerNames } from './utils/gameSetup'
 import { buildRound, getHallOfFameEntries, getLeaderboard, getLiveStandings, getPlayerStatistics, getPlayerTotal, getRecentRoundSummaries, getWinnerIds } from './utils/scoring'
@@ -773,10 +772,13 @@ function App() {
 
     return (
       <main className="app-shell">
-        <section className="hero-card home-card" aria-labelledby="home-title">
+        <section className="hero-card home-card" aria-label="Flip7 Companion home">
           <div className="title-plaque title-plaque--home">
-            <p className="eyebrow">Game-night scorecard</p>
-            <BrandMark titleId="home-title" />
+            <img
+              className="home-brand-image"
+              src={`${import.meta.env.BASE_URL}brand/flip7-companion-wordmark.svg`}
+              alt="Flip7 Companion"
+            />
             <p className="tagline">A premium table-side scorekeeper for fast rounds and sharp finishes.</p>
           </div>
 

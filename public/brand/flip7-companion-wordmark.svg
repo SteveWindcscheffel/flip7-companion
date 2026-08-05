@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" role="img" aria-labelledby="title desc">
+  <title id="title">Flip7 Companion wordmark</title>
+  <desc id="desc">Art deco tabletop-style plaque with Flip7 and Companion lettering.</desc>
+
+  <g transform="translate(320 126) rotate(-4) translate(-320 -126)">
+    <rect x="86" y="44" width="468" height="168" rx="24" fill="#f8eed8"/>
+    <rect x="86" y="44" width="468" height="168" rx="24" fill="none" stroke="#b78a43" stroke-width="6"/>
+    <rect x="97" y="55" width="446" height="146" rx="18" fill="none" stroke="#d9b774" stroke-width="2.8"/>
+
+    <g fill="none" stroke="#b78a43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.82">
+      <path d="M108 86V66h20"/>
+      <path d="M513 66h20v20"/>
+      <path d="M108 170v20h20"/>
+      <path d="M513 190h20v-20"/>
+      <path d="M287 65h66"/>
+      <path d="M287 191h66"/>
+    </g>
+
+    <g transform="translate(510 78)">
+      <circle cx="0" cy="0" r="13" fill="#c24f42"/>
+      <path d="M0 -18V18M-18 0H18M-12 -12L12 12M12 -12L-12 12" stroke="#f1dfbc" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
+      <circle cx="0" cy="0" r="5" fill="#f3e2c0"/>
+    </g>
+
+    <rect x="128" y="94" width="112" height="24" rx="12" fill="#c14f42"/>
+    <text x="184" y="111" text-anchor="middle" font-family="'DM Sans','Segoe UI',Arial,sans-serif" font-size="12" letter-spacing="2.2" font-weight="700" fill="#f8eed8">TABLETOP</text>
+
+    <text x="320" y="152" text-anchor="middle" font-family="'Limelight',Georgia,'Times New Roman',serif" font-size="88" letter-spacing="4" fill="#c2483b" stroke="#f6e5c4" stroke-width="6.2" paint-order="stroke fill" >FLIP7</text>
+    <text x="320" y="152" text-anchor="middle" font-family="'Limelight',Georgia,'Times New Roman',serif" font-size="88" letter-spacing="4" fill="none" stroke="#9a6831" stroke-width="1.6" opacity="0.65">FLIP7</text>
+  </g>
+
+  <g transform="translate(320 210)">
+    <path d="M-155 -12h310l18 12-18 12h-310l-18-12z" fill="#f7e8c8" stroke="#b78a43" stroke-width="3"/>
+    <path d="M-124 -22l-10 10M124 -22l10 10" stroke="#b78a43" stroke-width="2" stroke-linecap="round" opacity="0.78"/>
+    <text x="0" y="7" text-anchor="middle" font-family="'DM Sans','Segoe UI',Arial,sans-serif" font-size="34" letter-spacing="7" font-weight="800" fill="#16283d">COMPANION</text>
+  </g>
+</svg>
