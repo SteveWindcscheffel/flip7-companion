@@ -870,7 +870,6 @@ function App() {
             <button type="button" className="back-button" onClick={goHome}>
               ← Back
             </button>
-            <p className="eyebrow">New Game</p>
             <h1 id="new-game-title">New Game</h1>
           </div>
 

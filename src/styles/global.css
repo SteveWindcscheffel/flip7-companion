@@ -1176,10 +1176,26 @@ input:focus-visible {
 
 .new-game-screen .title-plaque--new-game {
   display: grid;
-  gap: 8px;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+}
+
+.new-game-screen .title-plaque--new-game h1 {
+  margin: 0;
+  line-height: 1;
+  font-size: clamp(1.18rem, 4.9vw, 1.54rem);
+  letter-spacing: 0.12em;
+  color: #f8efd9;
 }
 
 .new-game-screen .back-button {
+  min-height: 40px;
+  min-width: 88px;
+  padding: 0 12px;
+  border-radius: 10px;
   border: 1px solid rgba(151, 109, 39, 0.74);
   background: linear-gradient(180deg, #fff6e2 0%, #f2e0b8 100%);
   color: var(--vs-navy);
@@ -1191,30 +1207,39 @@ input:focus-visible {
 
 .new-game-screen .panel-header {
   padding: 12px 14px;
+  border-radius: 14px;
 }
 
 .new-game-screen .recent-player-group {
   padding: 12px;
   gap: 10px;
+  border-radius: 14px;
 }
 
 .new-game-screen .recent-player-list {
+  display: grid;
   gap: 8px;
 }
 
 .new-game-screen .recent-player-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 8px;
   border-radius: 12px;
   background: #fff8e9;
-  border: 1px solid rgba(176, 130, 52, 0.4);
-  padding: 4px;
+  border: 1px solid rgba(176, 130, 52, 0.45);
+  padding: 5px;
 }
 
 .new-game-screen .recent-player-button {
+  width: 100%;
   min-height: 44px;
-  min-width: 132px;
+  min-width: 0;
   padding: 10px 12px;
   border: 1px solid rgba(176, 130, 52, 0.58);
   background: linear-gradient(180deg, #fff8e9 0%, #f5e3bc 100%);
+  justify-content: space-between;
 }
 
 .new-game-screen .recent-player-button__name {
@@ -1225,10 +1250,15 @@ input:focus-visible {
   width: 40px;
   min-width: 40px;
   min-height: 40px;
-  border: 1px solid rgba(121, 40, 31, 0.82);
-  background: linear-gradient(180deg, #df6a5e 0%, #c9473b 100%);
-  color: #fff8ec;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  border-radius: 10px;
+  border: 1px solid rgba(133, 94, 31, 0.78);
+  background: linear-gradient(180deg, #fff6e2 0%, #f2e0b8 100%);
+  color: var(--vs-navy);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.56),
+    0 3px 0 rgba(20, 41, 50, 0.2),
+    0 6px 10px rgba(8, 21, 28, 0.12);
+  z-index: 1;
 }
 
 .new-game-screen .player-list--deck {
@@ -1240,6 +1270,10 @@ input:focus-visible {
   padding: 14px;
   border-radius: 16px;
   overflow: hidden;
+  background:
+    var(--vs-paper-texture),
+    #fff6e2;
+  background-size: 140px 140px, auto;
 }
 
 .new-game-screen .player-list--deck .player-row::before {
@@ -1255,12 +1289,13 @@ input:focus-visible {
 }
 
 .new-game-screen .player-input-row input {
-  min-height: 46px;
+  min-height: 48px;
   border: 1px solid rgba(151, 109, 39, 0.66);
   border-radius: 12px;
   background: #fffaf0;
   font-size: 1rem;
   font-weight: 700;
+  padding: 0 12px;
 }
 
 .new-game-screen .player-input-row input:focus {
@@ -1288,6 +1323,19 @@ input:focus-visible {
   background: linear-gradient(180deg, #e65e4f 0%, var(--vs-coral) 52%, var(--vs-coral-dark) 100%);
   border: 1px solid rgba(113, 35, 27, 0.94);
   color: #fff9ec;
+}
+
+.new-game-screen .action-row.action-row--bottom {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.new-game-screen .action-row.action-row--bottom .secondary-button {
+  min-width: 136px;
+}
+
+.new-game-screen .action-row.action-row--bottom .primary-button {
+  flex: 1 1 178px;
 }
 
 .home-card .secondary-button,
@@ -1871,7 +1919,33 @@ body:has(.active-game-screen) {
   }
 
   .new-game-screen .recent-player-button {
-    min-width: 118px;
+    min-width: 0;
+  }
+
+  .new-game-screen .title-plaque--new-game {
+    grid-template-columns: auto 1fr;
+    gap: 8px;
+  }
+
+  .new-game-screen .title-plaque--new-game h1 {
+    font-size: clamp(1.08rem, 4.7vw, 1.36rem);
+  }
+
+  .new-game-screen .recent-player-item {
+    grid-template-columns: minmax(0, 1fr) 42px;
+    gap: 7px;
+  }
+
+  .new-game-screen .action-row.action-row--bottom {
+    gap: 8px;
+  }
+
+  .new-game-screen .action-row.action-row--bottom .secondary-button {
+    min-width: 124px;
+  }
+
+  .new-game-screen .action-row.action-row--bottom .primary-button {
+    min-width: 144px;
   }
 
   .active-game-screen {
