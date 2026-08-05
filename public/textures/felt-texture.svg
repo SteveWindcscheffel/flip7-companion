@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220" viewBox="0 0 220 220">
+  <rect width="220" height="220" fill="#0d3f46"/>
+  <g stroke="#87b8b6" stroke-opacity="0.08" stroke-width="1">
+    <path d="M0 18h220"/>
+    <path d="M0 44h220"/>
+    <path d="M0 70h220"/>
+    <path d="M0 96h220"/>
+    <path d="M0 122h220"/>
+    <path d="M0 148h220"/>
+    <path d="M0 174h220"/>
+    <path d="M0 200h220"/>
+  </g>
+  <g stroke="#a9d0cd" stroke-opacity="0.06" stroke-width="1">
+    <path d="M18 0v220"/>
+    <path d="M44 0v220"/>
+    <path d="M70 0v220"/>
+    <path d="M96 0v220"/>
+    <path d="M122 0v220"/>
+    <path d="M148 0v220"/>
+    <path d="M174 0v220"/>
+    <path d="M200 0v220"/>
+  </g>
+</svg>

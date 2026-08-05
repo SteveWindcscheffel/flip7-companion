@@ -1,4 +1,5 @@
 import { type FormEvent, type TouchEvent, useEffect, useRef, useState } from 'react'
+import homeWordmarkUrl from './assets/flip7-companion-wordmark.svg'
 import { storage } from './services/storage'
 import type { Game, Player } from './types/game'
 import { createActiveGame, validatePlayerNames } from './utils/gameSetup'
@@ -772,10 +773,14 @@ function App() {
 
     return (
       <main className="app-shell">
-        <section className="hero-card home-card" aria-labelledby="home-title">
+        <section className="hero-card home-card" aria-label="Flip7 Companion home">
           <div className="title-plaque title-plaque--home">
-            <p className="eyebrow">Game-night scorecard</p>
-            <h1 id="home-title">Flip7 Companion</h1>
+            <img
+              className="home-brand-image"
+              src={homeWordmarkUrl}
+              alt="Flip7 Companion"
+              decoding="sync"
+            />
             <p className="tagline">A premium table-side scorekeeper for fast rounds and sharp finishes.</p>
           </div>
 
@@ -800,7 +805,7 @@ function App() {
           </div>
 
           {activeGame ? (
-            <div className="home-panel saved-game-card">
+            <div className="home-panel saved-game-card home-panel--row-group">
               <p className="section-label">Saved unfinished game</p>
               <p className="helper-text saved-game-summary">Players: {activeGame.players.map((player) => player.name).join(', ')}</p>
               <p className="helper-text saved-game-summary">Current round: {currentRoundNumber}</p>
@@ -812,7 +817,7 @@ function App() {
               </button>
             </div>
           ) : history.length > 0 ? (
-            <div className="home-panel">
+            <div className="home-panel home-panel--row-group">
               <div className="panel-head">
                 <p className="section-label">Recent completed games</p>
               </div>
@@ -830,7 +835,7 @@ function App() {
                       year: 'numeric'
                     })
                     return (
-                      <button key={game.id} type="button" className="history-card history-card--compact" onClick={() => openGameDetail(game)}>
+                      <button key={game.id} type="button" className="history-card history-card--compact home-history-row" onClick={() => openGameDetail(game)}>
                         <div className="history-card__top">
                           <strong>{winnerNames.join(', ') || 'Winners pending'}</strong>
                           <span>{dateLabel}</span>
@@ -862,16 +867,15 @@ function App() {
 
     return (
       <main className="app-shell">
-        <section className="hero-card" aria-labelledby="new-game-title">
-          <div className="title-plaque">
+        <section className="hero-card new-game-screen" aria-labelledby="new-game-title">
+          <div className="title-plaque title-plaque--new-game">
             <button type="button" className="back-button" onClick={goHome}>
               ← Back
             </button>
-            <p className="eyebrow">New Game</p>
             <h1 id="new-game-title">New Game</h1>
           </div>
 
-          <form className="setup-panel" onSubmit={handleStartGame}>
+          <form className="setup-panel setup-panel--new-game" onSubmit={handleStartGame}>
             <div className="panel-header">
               <p>Build your table, save names, and begin the round.</p>
             </div>
@@ -900,7 +904,7 @@ function App() {
               </div>
             ) : null}
 
-            <div className="player-list">
+            <div className="player-list player-list--deck">
               {players.map((name, index) => (
                 <div key={`player-row-${index}`} className={`player-row${errors[index] ? ' player-row--invalid' : ''}`}>
                   <div className="player-row__head">
@@ -962,21 +966,21 @@ function App() {
 
   return (
     <main className="app-shell">
-      <section className="hero-card" aria-labelledby="active-title">
-        <div className="title-plaque">
-          <p className="eyebrow">Round {nextRoundNumber}</p>
-          <h1 id="active-title">Active Game</h1>
+      <section className="hero-card active-game-screen" aria-labelledby="active-title">
+        <div className="title-plaque title-plaque--active">
+          <span className="round-badge">Round {nextRoundNumber}</span>
+          <h1 id="active-title">ACTIVE GAME</h1>
         </div>
 
         <div className="setup-panel">
           {isEnteringRound ? (
-            <div className="round-entry-card">
+            <div className="round-entry-card active-round-entry-card">
               <div className="round-entry-head">
                 <p className="section-label">Round {activeGame.rounds.length + 1}</p>
                 <p className="section-label">Player {currentPlayerIndex + 1} of {activeGame.players.length}</p>
               </div>
               <div
-                className="score-card score-card--hero"
+                className="score-card score-card--hero active-hero-card"
                 onTouchStart={handleSwipeStart}
                 onTouchEnd={(event) => handleSwipeEnd(event, 'round-entry')}
               >
@@ -1003,14 +1007,15 @@ function App() {
                   placeholder="0"
                 />
               </div>
-              <div className="leaderboard-card leaderboard-card--compact">
+              <div className="leaderboard-card leaderboard-card--compact active-leaderboard-card">
                 <p className="section-label">Live standings</p>
                 <p className="live-standings-summary">{enteredScoresCount} of {activeGame.players.length} scores entered</p>
                 <div className="leaderboard-list">
                   {liveStandings.map((entry, index) => (
                     <div key={entry.player.id} className="leaderboard-row">
                       <div className="leaderboard-row__identity">
-                        <span>{index + 1}. {entry.player.name}</span>
+                        <span className="leaderboard-rank-badge" aria-hidden="true">{index + 1}</span>
+                        <span className="leaderboard-player-name">{entry.player.name}</span>
                         {activeGame.players[currentPlayerIndex]?.id === entry.player.id ? (
                           <span className="round-status-chip round-status-chip--playing">● Playing now</span>
                         ) : (draftScores[entry.player.id] ?? '').trim() !== '' ? (
@@ -1045,7 +1050,7 @@ function App() {
           ) : (
             <>
               <div
-                className={`score-card score-card--hero${leaderboard[0]?.player.id === currentPlayer.id ? ' score-card--leader' : ''}`}
+                className={`score-card score-card--hero active-hero-card${leaderboard[0]?.player.id === currentPlayer.id ? ' score-card--leader' : ''}`}
                 onTouchStart={handleSwipeStart}
                 onTouchEnd={(event) => handleSwipeEnd(event, 'active-card')}
               >
@@ -1104,12 +1109,15 @@ function App() {
                 </div>
               </div>
 
-              <div className="leaderboard-card">
+              <div className="leaderboard-card active-leaderboard-card">
                 <p className="section-label">Live leaderboard</p>
                 <div className="leaderboard-list">
                   {leaderboard.map((entry, index) => (
                     <div key={entry.player.id} className="leaderboard-row">
-                      <span>{index + 1}. {entry.player.name}</span>
+                      <div className="leaderboard-row__identity">
+                        <span className="leaderboard-rank-badge" aria-hidden="true">{index + 1}</span>
+                        <span className="leaderboard-player-name">{entry.player.name}</span>
+                      </div>
                       <strong>{entry.total}</strong>
                     </div>
                   ))}
