@@ -1,4 +1,5 @@
 import { type FormEvent, type TouchEvent, useEffect, useRef, useState } from 'react'
+import homeWordmarkUrl from './assets/flip7-companion-wordmark.svg'
 import { storage } from './services/storage'
 import type { Game, Player } from './types/game'
 import { createActiveGame, validatePlayerNames } from './utils/gameSetup'
@@ -8,11 +9,6 @@ const MIN_PLAYERS = 2
 const MAX_PLAYERS = 10
 const WINNING_TARGET = 200
 const SWIPE_THRESHOLD = 60
-const HOME_LOGO_SOURCES = [
-  'brand/flip7-companion-wordmark.svg',
-  '/flip7-companion/brand/flip7-companion-wordmark.svg',
-  '/brand/flip7-companion-wordmark.svg'
-]
 const accentColors: Record<string, string> = {
   coral: '#d76348',
   violet: '#6a5aa6',
@@ -781,17 +777,9 @@ function App() {
           <div className="title-plaque title-plaque--home">
             <img
               className="home-brand-image"
-              src={HOME_LOGO_SOURCES[0]}
+              src={homeWordmarkUrl}
               alt="Flip7 Companion"
               decoding="sync"
-              onError={(event) => {
-                const img = event.currentTarget
-                const currentIndex = Number.parseInt(img.dataset.logoFallbackIndex ?? '0', 10)
-                const nextIndex = currentIndex + 1
-                if (nextIndex >= HOME_LOGO_SOURCES.length) return
-                img.dataset.logoFallbackIndex = String(nextIndex)
-                img.src = HOME_LOGO_SOURCES[nextIndex]
-              }}
             />
             <p className="tagline">A premium table-side scorekeeper for fast rounds and sharp finishes.</p>
           </div>
