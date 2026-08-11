@@ -30,3 +30,15 @@ export function getAccentColor(accent: string | undefined, fallback = '#5f7480')
   if (!accent) return fallback
   return PLAYER_ACCENT_COLORS[accent as PlayerAccent] ?? fallback
 }
+
+/**
+ * Returns the first accent in PLAYER_ACCENT_ORDER that isn't already in use.
+ * Falls back to cycling (modulo) only once every accent is taken, so a
+ * full 10-player table always has ten distinct accents.
+ */
+export function nextAccent(usedAccents: PlayerAccent[]): PlayerAccent {
+  const used = new Set(usedAccents)
+  const firstUnused = PLAYER_ACCENT_ORDER.find((accent) => !used.has(accent))
+  if (firstUnused) return firstUnused
+  return PLAYER_ACCENT_ORDER[usedAccents.length % PLAYER_ACCENT_ORDER.length]
+}

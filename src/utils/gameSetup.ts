@@ -1,5 +1,8 @@
 import type { Game, Player } from '../types/game'
-import { PLAYER_ACCENT_ORDER } from './playerAccents'
+import { nextAccent } from './playerAccents'
+
+export const MIN_PLAYERS = 2
+export const MAX_PLAYERS = 10
 
 export function validatePlayerNames(rawNames: string[]) {
   const trimmedValues = rawNames.map((name) => name.trim())
@@ -21,16 +24,27 @@ export function validatePlayerNames(rawNames: string[]) {
     seenNames.add(value.toLowerCase())
   })
 
+  if (values.length > MAX_PLAYERS) {
+    trimmedValues.forEach((value, index) => {
+      if (value && index >= MAX_PLAYERS && !errors[index]) {
+        errors[index] = `Only the first ${MAX_PLAYERS} players can be seated.`
+      }
+    })
+  }
+
   return { values, errors }
 }
 
 export function createActiveGame(names: string[]): Game {
-  const trimmed = names.map((name) => name.trim()).filter(Boolean)
-  const players: Player[] = trimmed.map((name, index) => ({
-    id: `player-${index + 1}`,
-    name,
-    accent: PLAYER_ACCENT_ORDER[index % PLAYER_ACCENT_ORDER.length]
-  }))
+  const trimmed = names.map((name) => name.trim()).filter(Boolean).slice(0, MAX_PLAYERS)
+  const players: Player[] = trimmed.reduce<Player[]>((acc, name, index) => {
+    acc.push({
+      id: `player-${index + 1}`,
+      name,
+      accent: nextAccent(acc.map((player) => player.accent))
+    })
+    return acc
+  }, [])
 
   return {
     id: `game-${Date.now()}`,
