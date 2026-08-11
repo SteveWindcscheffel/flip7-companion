@@ -17,7 +17,10 @@ export default defineConfig({
         display: 'standalone',
         start_url: '/flip7-companion/',
         scope: '/flip7-companion/',
-        icons: [{ src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' }]
+        icons: [
+          { src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+          { src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'maskable' }
+        ]
       }
     })
   ]
